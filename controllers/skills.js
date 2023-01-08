@@ -8,7 +8,7 @@ function index(req, res) {
       time: req.time
     })
   })
-  .catch(error => { // If there's an error, console.log it and redirect back home!
+  .catch(error => {
     console.log(error)
     res.redirect('/')
   })
