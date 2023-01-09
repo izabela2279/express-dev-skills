@@ -18,6 +18,19 @@ function newSkill(req, res) {
   res.render('skills/new')
 }
 
+function show(req, res) {
+  Skill.findById(req.params.id)
+  .then(skill => {
+    res.render('skills/show', {
+      skill: skill
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/skills')
+  })
+}
+
 function create(req, res) {
   console.log(req.body)
   req.body.done = false
@@ -45,6 +58,7 @@ function deleteSkill(req, res) {
 export {
   index,
   newSkill as new,
+  show,
   create,
   deleteSkill as delete,
 }
